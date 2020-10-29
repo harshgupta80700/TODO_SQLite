@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_sqlite/shared/appbar.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: getAppBar(),
+    );
   }
 }

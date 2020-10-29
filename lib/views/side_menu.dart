@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_sqlite/routes/routes.dart';
+import 'package:todo_sqlite/views/categories.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -25,12 +27,16 @@ class _SideMenuState extends State<SideMenu> {
             ListTile(
               leading: Icon(Icons.home,color: Colors.black,),
               title: Text("HOME"),
-              onTap: (){},
+              onTap: (){
+                Navigator.pushNamedAndRemoveUntil(context, AppRoutes.HOME, (route) => false);
+              },
             ),
             ListTile(
               leading: Icon(Icons.view_list,color: Colors.black,),
               title: Text("CATEGORIES"),
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Categories()));
+              },
             )
           ],
         ),
