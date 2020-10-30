@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_sqlite/routes/routes.dart';
 import 'package:todo_sqlite/views/home.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Homescreen(),
+      routes: routes,
+      initialRoute: AppRoutes.HOME,
     );
   }
 }

@@ -35,7 +35,8 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(Icons.view_list,color: Colors.black,),
               title: Text("CATEGORIES"),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Categories()));
+                //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Categories()));
+                Navigator.pushNamed(context, AppRoutes.CATEGORIES);
               },
             )
           ],
