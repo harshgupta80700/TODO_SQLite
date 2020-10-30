@@ -13,4 +13,8 @@ class CategoryService{
     return await _repositories.insertData('categories',categories.categoryMap());
   }
 
+  Future<List<CategoriesModel>> readCategories() async{
+    return _repositories.readData('categories');
+  }
+
 }

@@ -12,9 +12,16 @@ class _CategoriesState extends State<Categories> {
 
   TextEditingController _categoryTextEditingController = TextEditingController();
   TextEditingController _descriptionTextEditingController = TextEditingController();
+  TextEditingController _idTextEditingController = TextEditingController();
 
   CategoriesModel categories = CategoriesModel();
   CategoryService categoryService = CategoryService();
+  List<CategoriesModel> _categoriesList;
+
+  getAllCategories() async{
+    print(categoryService.readCategories());
+    print("category list = " + _categoriesList.toString());
+  }
 
   _showCategoriesForm(BuildContext context){
     return showDialog(
@@ -29,12 +36,21 @@ class _CategoriesState extends State<Categories> {
               FlatButton(onPressed: (){
                 categories.name = _categoryTextEditingController.text;
                 categories.desc = _descriptionTextEditingController.text;
-                categoryService.saveCategories(categories);
+                categories.id = int.parse(_idTextEditingController.text);
+                var result = categoryService.saveCategories(categories);
+                print(result);
+                Navigator.pop(context);
               }, child: Text("SUBMIT"),color: Colors.blue)
             ],
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                TextFormField(
+                  controller: _idTextEditingController,
+                  decoration: InputDecoration(
+                      hintText: "Id"
+                  ),
+                ),
                 TextFormField(
                   controller: _categoryTextEditingController,
                   decoration: InputDecoration(
@@ -53,6 +69,12 @@ class _CategoriesState extends State<Categories> {
           );
       }
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getAllCategories();
   }
 
   @override
