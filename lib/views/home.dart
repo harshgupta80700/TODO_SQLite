@@ -13,11 +13,6 @@ class _HomescreenState extends State<Homescreen> {
     return Scaffold(
       appBar: getAppBar(),
       drawer: SideMenu(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: Colors.black,
-        onPressed: (){},
-      ),
     );
   }
 }

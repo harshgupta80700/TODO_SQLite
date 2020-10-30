@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_sqlite/routes/routes.dart';
-import 'package:todo_sqlite/views/categories.dart';
 
 class SideMenu extends StatefulWidget {
   @override
