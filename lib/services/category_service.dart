@@ -1,10 +1,16 @@
 import 'package:todo_sqlite/models/categories.dart';
+import 'package:todo_sqlite/repositories/repositories.dart';
 
 class CategoryService{
 
-  saveCategories(CategoriesModel categories){
-    print(categories.name);
-    print(categories.desc);
+  Repositories _repositories;
+
+  CategoryService(){
+    _repositories = Repositories();
+  }
+
+  saveCategories(CategoriesModel categories) async{
+    return await _repositories.insertData('categories',categories.categoryMap());
   }
 
 }
