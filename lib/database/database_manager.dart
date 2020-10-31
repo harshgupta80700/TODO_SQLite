@@ -29,7 +29,7 @@ class DataBaseManager{
   _initialiseDatabase() async{
     Directory directory = await getApplicationDocumentsDirectory();
     String path =  join(directory.path,_dbName);
-    await openDatabase(path,version: _dbVersion,onCreate: _onCreateDatabase);
+    return await openDatabase(path,version: _dbVersion,onCreate: _onCreateDatabase);
   }
 
   Future _onCreateDatabase(Database db, int version) async{
@@ -42,22 +42,23 @@ class DataBaseManager{
   }
 
   Future<int> insert(Map<String,dynamic> row) async{
-
+    Database db = await instance.database;
+    return await db.insert(_tableName, row);
   }
 
   Future<List<Map<String,dynamic>>> queryAll() async{
-
+    Database db = await instance.database;
+    return await db.query(_tableName);
   }
 
-  Future<int> deleteRow() async{
-
+  Future<int> update(Map<String,dynamic> row) async{
+    Database db = await instance.database;
+    int id = row[columnId];
+    return await db.update(_tableName, row,where: '$columnId = ?',whereArgs: [id]);
   }
 
-  Future delete() async{
-
+  Future<int> delete(int id) async{
+    Database db = await instance.database;
+    return await db.delete(_tableName,where:'$columnId = ?',whereArgs: [id]);
   }
-
-
-
-
 }
