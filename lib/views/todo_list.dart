@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_sqlite/locator.dart';
 import 'package:todo_sqlite/provider/todo_provider.dart';
+import 'package:todo_sqlite/views/todo_card.dart';
 
 class TodoList extends StatefulWidget {
   @override
@@ -19,10 +20,9 @@ class _TodoListState extends State<TodoList> {
           return ListView.builder(
             itemCount:provider.todo.length,
             itemBuilder: (_,index){
-              return ListTile(
-                title: Text(provider.todo[index].name),
-                leading: Text(provider.todo[index].id.toString()),
-                trailing: Text(provider.todo[index].desc),
+              return Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TodoCard(todoModel: provider.todo[index],),
               );
             },
           );

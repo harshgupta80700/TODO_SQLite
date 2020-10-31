@@ -57,24 +57,23 @@ class TodoDatabase{
   Future getAllTodo() async{
     Database db =  await instance.database;
     List<Map<String,dynamic>> todosLocal = await db.query(_tableName);
-    print(todosLocal);
     todoProvider.todo = [];
     todosLocal.forEach((todo) {
-      print(todo['id']);
       todoProvider.todo.add(TodoModel.fromMap(todo));
     });
-    print("todo provider vala " + todoProvider.todo[5].id.toString());
   }
 
-  Future<int> updateTodo(Map<String,dynamic> todo)async{
+  Future updateTodo(Map<String,dynamic> todo)async{
     Database db =  await instance.database;
     int id = todo['id'];
-    return await db.update(_tableName, todo,where:'$columnId = ?',whereArgs: [id]);
+    await db.update(_tableName, todo,where:'$columnId = ?',whereArgs: [id]);
+    await getAllTodo();
   }
 
-  Future<int> deleteTodo(int id) async{
+  Future deleteTodo(int id) async{
     Database db =  await instance.database;
-    return await db.delete(_tableName,where: '$columnId = ?',whereArgs: [id]);
+    await db.delete(_tableName,where: '$columnId = ?',whereArgs: [id]);
+    await getAllTodo();
   }
 
 }
