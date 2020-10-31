@@ -4,10 +4,8 @@ import 'package:todo_sqlite/locator.dart';
 import 'package:todo_sqlite/provider/todo_provider.dart';
 
 List<SingleChildWidget> supplyProvider(){
-
   return[
     ChangeNotifierProvider(
         create: (_) => locator<TodoProvider>())
   ];
-
 }
