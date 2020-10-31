@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_sqlite/locator.dart';
 import 'package:todo_sqlite/provider/supply_provider.dart';
 import 'package:todo_sqlite/routes/routes.dart';
 
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 

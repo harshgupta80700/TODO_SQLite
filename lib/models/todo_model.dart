@@ -10,9 +10,9 @@ class TodoModel{
   });
 
   TodoModel.fromMap(Map<String,dynamic> todo){
-    this.name = todo['name'];
-    this.desc = todo['desc'];
-    this.id = todo['id'];
+    id = todo['id'];
+    name = todo['name'];
+    desc = todo['desc'];
   }
 
   Map<String,dynamic> toMap(){
